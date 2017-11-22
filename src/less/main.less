@@ -1,0 +1,206 @@
+html, body{
+  height:100%;
+  background: #f6f6f6;
+}
+#root {
+  background: #f6f6f6;
+  .header-container {
+
+    position:relative;
+    font-family: sans-serif;
+    border-bottom: 5px solid #59595a;
+    height: 4em;
+
+    background:#343434;
+    color:#E6E6FA;
+    .header-logo{
+      height:4em;
+      width:4em;
+      background-image:url("../img/logo.png") ;
+      background-repeat:no-repeat;
+      background-position:50% 50%;
+      display:inline-block;
+    }
+
+    .header-title{
+      display:inline-block;
+      color:#ffffff;
+      line-height: 2em;
+      position:absolute;
+
+
+      font-size:2em;
+      height:2em;
+    }
+
+    .header-links{
+      position:relative;
+      margin:0 auto;
+      width:17em;
+      font-size:1.2em;
+
+      .rec{
+        position:absolute;
+        bottom:1em;
+        right:1em;
+
+      }
+      .site{
+        position:absolute;
+        bottom:1em;
+        left:1em;
+      }
+   .header-link{
+
+
+     font-size:1.25em;
+     cursor:pointer;
+     color:white;
+     display:inline-block;
+
+     &:hover{
+       text-decoration: underline;
+       color:#dfdfdf;
+     }
+    }
+
+    }
+      .button{
+        background:#ec6550;
+        height:2em;
+        text-align:center;
+        line-height:2em;
+        display:inline-block;
+        border-bottom:3px solid rgba(217,91,72,1);
+        border-radius:5px;
+        padding-left:0.5em;
+        padding-right:0.5em;
+        cursor:pointer;
+
+         &:hover{
+           border-bottom:none;
+
+         }
+        &.registration-button{
+         position:absolute;
+          bottom:1em;
+          right:6em;
+
+
+        }
+        &.login-button{
+          position:absolute;
+          bottom:1em;
+          right:1em;
+        }
+    }
+
+  }
+.login-container{
+  width:50%;
+  margin-left:10%;
+  margin-top:2em;
+  .login-title {
+    font-family:'Roboto Slab';
+    font-size:1.4em;
+    border-bottom:2px solid #ec6550;
+    display:inline-block;
+    &:first-letter {
+      color:#ec6550;
+    }
+  }
+  .login-form{
+    border:1px solid #aaa;
+    border-radius: 5px;
+    margin-top:2em;
+    background: #fafafa;
+    .login-description {
+      margin-left:1em;
+      margin-top:1em;
+    }
+    .login-input{
+      height:2.5em;
+      border-radius:5em;
+      box-shadow:none;
+      border:1px solid #aaa;
+      text-indent:1em;
+      &.login-password{
+        margin-left:2.5em;
+
+      }
+
+      &.login-email {
+        margin-left:1em;
+
+
+      }
+
+    }
+    .wrapper{
+      display:flex;
+      margin-top:1em;
+      margin-bottom:1em;
+    }
+    .password{
+      color:white;
+      background: #21a7e1;
+      height:1.5em;
+      width:7em;
+      text-align:center;
+      display:inline-block;
+      margin-left:2em;
+      line-height:1.5em;
+      cursor:pointer;
+      margin-bottom:1em;
+      border-radius:3px;
+      border-bottom:3px solid #1999d1;
+      position:relative;
+      &:hover{
+        border-bottom:none;
+
+        top:3px;
+
+      }
+    }
+    .login {
+      color: white;
+      background: #21a7e1;
+      height: 1.5em;
+      width: 5em;
+      display: inline-block;
+      margin-left: 16em;
+      line-height: 1.5em;
+
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 1em;
+      border-radius: 3px;
+      border-bottom: 3px solid #1999d1;
+      position:relative;
+      &:hover {
+        border-bottom: none;
+        top:3px;
+      }
+    }
+    .login-see-password {
+      background-image:url("../img/see.png");
+      background-repeat:no-repeat;
+      background-position:50% 50%;
+      background-size:cover;
+      display:inline-block;
+      height:2em;
+      width:2em;
+
+      margin-left:1em;
+
+      cursor:pointer;
+    &.no-see{
+      background-image:url("../img/no-see.png");
+    }
+
+
+    }
+  }
+}
+
+}
