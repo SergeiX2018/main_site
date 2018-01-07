@@ -1,16 +1,16 @@
 const initState = {
-    result:null
+    data:[]
 }
 
 
 const news = (state = initState, action) => {
     switch (action.type) {
-        case "REGISTRATION_FETCH_SUCCESS" : {
+        case "NEWS_FETCH_SUCCESS" : {
 
-            return Object.assign({},state,{result:action.message.result})
+            return Object.assign({},state,{data:action.message})
 
         }
-        case "REGISTRATION_FETCH_FAILED" : {
+        case "NEWS_FETCH_FAILED" : {
             return state
         }
 
@@ -21,4 +21,4 @@ const news = (state = initState, action) => {
     }
 }
 
-export default registration
+export default news

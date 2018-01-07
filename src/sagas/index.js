@@ -23,8 +23,13 @@ function* registration() {
     yield takeEvery("REGISTRATION_FETCH_REQUESTED", fetchRegistration);
 }
 
-function* registration() {
-    yield takeEvery("REGISTRATION_FETCH_REQUESTED", fetchRegistration);
+function* fetchNews(action) {
+    try {
+        const message = yield call(api.newsApi, action.data);
+        yield put({type: "NEWS_FETCH_SUCCESS", message});
+    } catch (e) {
+        yield put({type: "NEWS_FETCH_FAILED", message: e.message});
+    }
 }
 function* news() {
     yield takeEvery("NEWS_FETCH_REQUESTED", fetchNews);

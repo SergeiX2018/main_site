@@ -17,3 +17,8 @@ export const registrationRequest = (data)=>({
     data
 
 })
+export const newsRequest = (data)=>({
+    type:'NEWS_FETCH_REQUESTED',
+    data
+
+})

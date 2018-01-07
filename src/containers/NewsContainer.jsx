@@ -10,18 +10,20 @@ import VisibilitySensor from 'react-visibility-sensor'
 class NewsContainer extends Component {
     constructor() {
         super()
-        this.state = {articles:[],
+        this.state = {
             videos:[],
         }
 
 
-        this.initArticles()
+
         this.initVideos()
 
 
 
     }
-
+     componentDidMount() {
+         this.initArticles()
+     }
     handleScroll() {
         const y = window.scrollY;
 
@@ -34,14 +36,7 @@ class NewsContainer extends Component {
 
     }
     initArticles() {
-        fetch("http://localhost:3000/it-news", {
-
-            headers:{"Content-Type" : "application/json"}
-        })
-            .then(response=>response.json())
-            .then(response=>{
-                this.setState({articles:response})
-            })
+        this.props.actions.newsRequest()
     }
     initVideos() {
         fetch("http://localhost:3000/videos", {
@@ -77,7 +72,7 @@ class NewsContainer extends Component {
 
     render() {
 
-        const articles = this.state.articles
+        const articles = this.props.state.news.data
         const videos = this.state.videos
         return (
             <div>
