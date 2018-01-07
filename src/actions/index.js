@@ -22,3 +22,8 @@ export const newsRequest = (data)=>({
     data
 
 })
+export const videoRequest = (data)=>({
+    type:'VIDEO_FETCH_REQUESTED',
+    data
+
+})

@@ -27,11 +27,19 @@ export function registrationApi (data) {
         .then(response=>response.json())
 
 }
-export function newsApi (data){
-    return fetch("http://localhost:3000/it-news", {
+export function videoApi (data) {
+    return fetch("http://localhost:3000/videos", {
 
         headers:{"Content-Type" : "application/json"}
     })
         .then(response=>response.json())
+
+}
+export function newsApi (data) {
+    return fetch("http://localhost:3000/it-news", {
+
+        headers: {"Content-Type": "application/json"}
+    })
+        .then(response => response.json())
 
 }

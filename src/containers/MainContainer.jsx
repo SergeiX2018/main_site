@@ -10,18 +10,20 @@ class MainContainer extends Component {
     constructor() {
         super()
         this.state = {articles:[],
-            videos:[],
+
         }
 
 
         this.initArticles()
-        this.initVideos()
+
 
 
 
     }
 
-
+componentDidMount() {
+    this.initVideos()
+}
     initArticles() {
         fetch("http://localhost:3000/articles", {
 
@@ -33,14 +35,7 @@ class MainContainer extends Component {
             })
     }
     initVideos() {
-        fetch("http://localhost:3000/videos", {
-
-            headers:{"Content-Type" : "application/json"}
-        })
-            .then(response=>response.json())
-            .then(response=>{
-                this.setState({videos:response})
-            })
+        this.props.actions.videoRequest()
     }
     renderArticle(article,index) {
 
@@ -64,7 +59,7 @@ class MainContainer extends Component {
     render() {
 
         const articles = this.state.articles
-        const videos = this.state.videos
+        const videos = this.props.state.video.data
         return (
             <div>
 
