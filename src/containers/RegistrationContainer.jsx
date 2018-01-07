@@ -1,10 +1,71 @@
 import React, { Component } from 'react'
-export default  class RegistrationContainer extends Component {
+import {bindActionCreators} from 'redux'
+import { connect } from 'react-redux'
+import * as Actions from "./../actions/index.js"
+import HeaderContainer from './HeaderContainer'
+
+  class RegistrationContainer extends Component {
     constructor() {
         super()
         this.seePasswordClick = this.seePasswordClick.bind(this)
-        this.state = {seePassword:false,};
+        this.onRegistrationClick = this.onRegistrationClick.bind(this)
+        this.onPasswordChange = this.onPasswordChange.bind(this)
+        this.onEmailChange = this.onEmailChange.bind(this)
+        this.state = {seePassword:false,
+            email:"",
+            password:"",
+        };
+
     }
+
+      componentWillUpdate(nextProps,nextState) {
+          if(this.props.state.registration.result ===nextProps.state.registration.result){
+              return;
+          }
+          this.registrationHandler(nextProps.state.registration)
+      }
+    onPasswordChange(e) {
+        const password = e.target.value
+        this.setState ({password})
+
+    }
+    onEmailChange(e) {
+        const email = e.target.value
+        this.setState ({email})
+
+    }
+    onRegistrationClick() {
+        const email = this.state.email
+        const password = this.state.password
+
+        if(!email || !password) {
+            return
+        }
+        this.props.actions.registrationRequest({email,password})
+            // fetch("http://localhost:3000/registration", {
+            //     method:"POST",
+            //     body: JSON.stringify({
+            //         email,
+            //         password,
+            //     }),
+            //     headers:{"Content-Type" : "application/json"}
+            // })
+            //     .then(response=>response.json())
+            //     .then(response=>{
+            //         this.registrationHandler(response)
+            //     })
+
+
+        }
+      registrationHandler(response) {
+        if(response.result ===false) {
+            alert("Регистрация невозможна.Пользователь уже есть в системе")
+        }
+        if(response.result ===true) {
+            alert("Пользователь успешно зарегитрировался в системе.")
+            this.props.history.push("/login")
+        }
+      }
 
     seePasswordClick() {
         let seePassword =this.state.seePassword;
@@ -13,22 +74,35 @@ export default  class RegistrationContainer extends Component {
 
 
     }
+
     renderLogin () {
         const seePassword = this.state.seePassword;
         const seePasswordClass =  seePassword ? "login-see-password no-see":"login-see-password"
         return(
             <div className = "login-container">
-                <div className = "login-title">Войти на сайт</div>
+                <div className = "login-title" >Зарегистрироваться</div>
                 <div className = "login-form">
-                    <div className = "login-description">Чтобы войти на сайт используйте ваш email и пароль, которые были указаны при регистрации (подписке) на сайт</div>
+                    <div className = "login-description">Зарегистрируйтесь на сайте, используя Email и пароль</div>
                     <div className = "wrapper">
-                        <input type = "text" className = " login-input login-email" placeholder="email"/>
-                        <input type = {this.state.seePassword ? "text" : "password"} className = " login-input login-password" placeholder = "Ваш пароль"/>
+                    <input
+                        type = "text"
+                        className = " login-input login-email"
+                        onChange={this.onEmailChange}
+                        placeholder="email"
+                        value = {this.state.email}
+                    />
+                    <input
+                        type = {this.state.seePassword ? "text" : "password"}
+                        onChange={this.onPasswordChange}
+                        className = " login-input login-password"
+                        placeholder = "Ваш пароль"
+                        value ={ this.state.password}
+                    />
 
-                        <div onClick = {this.seePasswordClick} className = {seePasswordClass} ></div>
+                    <div onClick = {this.seePasswordClick} className = {seePasswordClass} ></div>
                     </div>
 
-                    <div className = "login-button login">Зарегистрироваться</div>
+                    <div className = "login-button  registration" onClick = {this.onRegistrationClick}>Зарегистрироваться</div>
 
                 </div>
 
@@ -37,36 +111,30 @@ export default  class RegistrationContainer extends Component {
             </div>
         )
     }
-    renderHeader() {
-        return(
-            <div className = "header-container">
-                <div className = "header-logo">
 
-                </div>
-                <div className = "header-title">
-                    itProgger
-                </div>
-                <div className = "header-links">
-                    <div className = " rec header-link">Реклама</div>
-                    <div className = " site header-link">Создать сайт</div>
-                </div>
-                <div className = "button registration-button">Регистрация</div>
-                <div className="button login-button" onClick={this.onLoginClick}>Войти</div>
-
-
-            </div>
-        )
-    }
 
     render() {
 
         return (
             <div>
-
-                {this.renderHeader() }
+                <HeaderContainer />
                 {this.renderLogin()}
 
             </div>
         )
     }
 }
+const mapStateToProps = (state, ownProps) => ({
+    state
+})
+
+const mapDispatchToProps = dispatch =>({
+    actions:bindActionCreators(Actions,dispatch)
+})
+export default RegistrationContainer = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+
+)(
+    RegistrationContainer
+)

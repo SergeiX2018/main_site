@@ -5,8 +5,9 @@ import * as Actions from "./../actions/index.js"
 import HeaderContainer from './HeaderContainer'
 import ArticlePreviewComponent from'../components/ArticlePreviewComponent'
 import VideoPreviewComponent from'../components/VideoPreviewComponent'
+import VisibilitySensor from 'react-visibility-sensor'
 
-class MainContainer extends Component {
+class NewsContainer extends Component {
     constructor() {
         super()
         this.state = {articles:[],
@@ -21,9 +22,19 @@ class MainContainer extends Component {
 
     }
 
+    handleScroll() {
+        const y = window.scrollY;
 
+        if(y>0) {
+            this.setState({isTop:false})
+        }
+        else{
+            this.setState({isTop:true})
+        }
+
+    }
     initArticles() {
-        fetch("http://localhost:3000/articles", {
+        fetch("http://localhost:3000/it-news", {
 
             headers:{"Content-Type" : "application/json"}
         })
@@ -48,7 +59,10 @@ class MainContainer extends Component {
 
 
         return(
-            <ArticlePreviewComponent article = {article} key ={index}/>
+            <VisibilitySensor key ={index} partialVisibility = {true}>
+                {({isVisible}) =>
+                    <ArticlePreviewComponent article = {article} isHidden={!isVisible} />
+                }</VisibilitySensor>
 
         )
     }
@@ -69,7 +83,7 @@ class MainContainer extends Component {
             <div>
 
                 <HeaderContainer/>
-                <div className = "main-content">
+                <div className = "news-content">
                     <div className = "articles-container">
                         <div className = "article-title">
                             новые статьи
@@ -104,10 +118,10 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch =>({
     actions:bindActionCreators(Actions,dispatch)
 })
-export default MainContainer = connect(
+export default NewsContainer = connect(
     mapStateToProps,
     mapDispatchToProps,
 
 )(
-    MainContainer
+    NewsContainer
 )

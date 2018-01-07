@@ -14,6 +14,7 @@ html, body{
     background:#343434;
     color:#E6E6FA;
     .header-logo{
+      cursor:pointer;
       height:4em;
       width:4em;
       background-image:url("../img/logo.png") ;
@@ -110,6 +111,7 @@ html, body{
     }
   }
   .login-form{
+    height:10em;
     border:1px solid #aaa;
     border-radius: 5px;
     margin-top:2em;
@@ -162,6 +164,29 @@ html, body{
 
       }
     }
+    .registration{
+      color: white;
+      background: #21a7e1;
+      height: 1.5em;
+      width: 11em;
+      display: inline-block;
+      margin-left: 16em;
+      line-height: 1.5em;
+
+      text-align: center;
+      cursor: pointer;
+      margin-bottom: 1em;
+      border-radius: 3px;
+      border-bottom: 3px solid #1999d1;
+      position:relative;
+      &:hover {
+        border-bottom: none;
+        top:3px;
+
+      }
+
+
+    }
     .login {
       color: white;
       background: #21a7e1;
@@ -202,5 +227,325 @@ html, body{
     }
   }
 }
+  .header-category.header-fixed {
+    background-image:url("../img/logo.png");
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position:0.5em 50%;
+
+    .header-search{
+      width:5em;
+      font-size:1.3em;
+      margin-left:1em;
+
+    }
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    height:2em;
+   .category-links {
+     margin-left:2em;
+     .item{
+       font-size:1.3em;
+
+
+     }
+
+   }
+  }
+
+.header-category {
+  position:relative;
+  height:3em;
+  background: #fff;
+.category-links{
+  display:flex;
+  position:relative;
+  width:80%;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+    .item{
+       display:inline-block;
+      text-align:center;
+      font-size:1.7em;
+      cursor:pointer;
+      transition: all 0.6s ease;
+      line-height: 1.5em;
+      &:hover{
+       color:#ec6550;
+}
+    }
+
+
+
+
+.header-search{
+bottom:0.3em;
+  right:2em;
+  position:absolute;
+  display:inline-block;
+  width:5em;
+  line-height: 1.5em;
+  cursor:pointer;
+  font-size:1.7em;
+  background-image:url("../img/search.svg") ;
+  background-repeat:no-repeat;
+  background-position:100% 50%;
+  background-size:1em;
+  &:hover{
+    opacity: 0.8;
+  }
+
+}
+
+}
+  .modal-container{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.5);
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+
+    .modal-container-search{
+      display:flex;
+      align-items:right;
+      width:43%;
+      margin-top:2em;
+      border:1px solid #FFFFFF;
+      padding:20px;
+      background: #FFFFFF;
+      input{
+        height:1.5em;
+        width:80%;
+      }
+
+    }
+
+    .modal-container-search-button{
+
+      height:1.5em;
+      width:4em;
+      border:1px solid #EA9999;;
+      margin-left:20px;
+      background: #EA9999;
+      background-image:url("../img/search.svg") ;
+      background-repeat:no-repeat;
+      background-position:50% 50%;
+      background-size:1em;
+      cursor:pointer;
+    }
+    .modal-container-close{
+      background: #fff;
+      border-radius:100%;
+      width: 2em;
+      height:2em;
+      font-size:1.5em;
+      line-height: 2em;
+      text-align:center;
+      cursor:pointer;
+
+
+
+
+    }
+  }
+
+}
+
+
+
+.text{
+  width:65%;
+  font-size:1.2em;
+}
+
+
+
+.article-preview-component{
+  opacity:1;
+  transition:all 0.6s ease;
+  margin:1em;
+  cursor:pointer;
+  position:relative;
+  width:27em;
+  height:30em;
+  border:1px solid #999;
+  border-radius:0.5em;
+  &.hidden{
+    opacity:0;
+  }
+  .article-preview-title{
+       font-size:1.5em;
+      margin:0.5em 1em;
+
+  }
+
+
+  .article-preview-image{
+    height:10em;
+    width:100%;
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+   border-top-right-radius: 0.5em;
+    border-top-left-radius: 0.5em;
+
+
+
+  }
+  .article-preview-description {
+    margin-left:1.5em;
+    margin-right:1.5em;
+  }
+  .article-preview-time{
+    position:absolute;
+    bottom:1em;
+    right:2em;
+    font-size:0.75em;
+    color: #333;
+  }
+  .article-preview-views {
+    position:absolute;
+    bottom:1em;
+    left:2em;
+    font-size:0.75em;
+    color: #333;
+  }
+
+}
+.main-content{
+  .articles-container{
+    width:70%;
+    display:inline-block;
+    .article-title{
+
+    }
+    .articles-wrapper{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction: row;
+      flex-wrap:wrap;
+
+    }
+
+  }
+
+  .videos-container{
+    .content-wrapper{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction: row;
+      flex-wrap:wrap;
+
+
+    }
+
+    width:70%;
+
+    .videos-title{
+      margin:0 auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-around;
+      position:relative;
+      width:80%;
+      background: #fff;
+      border:1px solid #999;
+      border-radius:0.5em;
+    }
+
+    .item-video {
+
+
+      display: inline-block;
+      text-align: center;
+      font-size: 1.7em;
+      cursor: pointer;
+      transition: all 0.6s ease;
+      line-height: 1.5em;
+      &:hover {
+        color: #ec6550;
+      }
+
+    }
+  }
+}
+
+
+
+
+.video-preview-component {
+  cursor: pointer;
+  position: relative;
+  height: 7em;
+  .video-preview-count{
+      position:absolute;
+      bottom:1em;
+      right:1em;
+    color:rgba(236,101,80,1)
+    }
+  .video-preview-tag{
+    position:absolute;
+    bottom:1em;
+    left:11em;
+  color:rgba(236,101,80,1)
+
+  }
+  .video-preview-image{
+     float:left;
+     display:inline-block;
+     width:10em;
+     height:7em;
+     background-repeat:no-repeat;
+     background-size:contain;
+     background-position:50% 50%;
+   }
+  .video-preview-title {
+    font-size: 1.5em;
+    margin-left:1em;
+    display:inline;
+
+  }
+
+}
+
+
+
+.video-preview-component:hover{
+  .video-preview-title{
+    text-decoration:underline;
+    color:#333;
+  }
+}
+
+.it-video-preview-component{
+  width:20em;
+  margin:1em;
+  height:25em;
+  .it-video-preview-image {
+    transition: all 0.6s ease;
+
+    width:100%;
+    height:12em;
+    background-repeat:no-repeat;
+    background-position:50% 50%;
+    background-size: 80% 80%;
+    &:hover{
+      background-size:100% 100%;}
+
+  }
+.it-video-preview-title{}
+.it-video-preview-tag{}
+  .it-video-preview-count{}
 
 }

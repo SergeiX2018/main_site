@@ -1,17 +1,16 @@
-
 const initState = {
-result:null
+    result:null
 }
 
 
-const login = (state = initState, action) => {
+const registration = (state = initState, action) => {
     switch (action.type) {
-        case "LOGIN_FETCH_SUCCESS" : {
+        case "REGISTRATION_FETCH_SUCCESS" : {
 
             return Object.assign({},state,{result:action.message.result})
 
         }
-        case "LOGIN_FETCH_FAILED" : {
+        case "REGISTRATION_FETCH_FAILED" : {
             return state
         }
 
@@ -22,4 +21,4 @@ const login = (state = initState, action) => {
     }
 }
 
-export default login
+export default registration

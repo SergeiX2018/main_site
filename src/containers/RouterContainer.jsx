@@ -4,7 +4,11 @@ import MainContainer from './MainContainer'
 import LoginContainer from './LoginContainer'
 import RegistrationContainer from './RegistrationContainer'
 import NoMatchContainer from './NoMatchContainer'
+import ModalContainer from './ModalContainer'
+import NewsContainer from './NewsContainer'
+import VideosContainer from './VideosContainer'
 export default class RouterContainer extends Component {
+
     constructor() {
 
         super()
@@ -14,11 +18,15 @@ export default class RouterContainer extends Component {
         return (
             <div>
                <Switch>
-                    <Route path="/" component={LoginContainer}/>
-                    <Route path="/login" component={LoginContainer}/>
+
+                    <Route exact path="/" component={MainContainer}/>
+                    <Route  path="/login" component={LoginContainer}/>
+                    <Route  path="/itvideos" component={VideosContainer}/>
+                    <Route  path="/news" component={NewsContainer}/>
                     <Route path="/registration" component={RegistrationContainer}/>
-                    <Route component={LoginContainer}/>
+                    <Route component={MainContainer}/>
                 </Switch>
+                <ModalContainer/>
             </div>
         )
     }
