@@ -31,8 +31,20 @@ function* fetchVideo(action) {
     }
 
 }
+function* fetchItVideo(action) {
+    try {
+        const message = yield call(api.itVideoApi, action.data);
+        yield put({type: "IT_VIDEO_FETCH_SUCCESS", message});
+    } catch (e) {
+        yield put({type: "IT_VIDEO_FETCH_FAILED", message: e.message});
+    }
+
+}
 function* video() {
     yield takeEvery("VIDEO_FETCH_REQUESTED", fetchVideo);
+}
+function* itVideo() {
+    yield takeEvery("IT_VIDEO_FETCH_REQUESTED", fetchItVideo);
 }
 function* login() {
     yield takeEvery("LOGIN_FETCH_REQUESTED", fetchLogin);
@@ -65,5 +77,6 @@ export default function* root() {
     yield fork(registration)
     yield fork(news)
     yield fork(video)
+    yield fork(itVideo)
     yield fork(article)
 }

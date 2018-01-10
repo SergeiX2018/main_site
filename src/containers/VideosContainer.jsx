@@ -10,50 +10,24 @@ class VideosContainer extends Component {
     constructor() {
 
         super()
-        this.state = {articles:[],
-            videos:[],itvideos:[]
-        }
 
 
-        this.initArticles()
-        this.initVideos()
-        this.initItVideos()
 
 
     }
 
 
 
+componentDidMount() {
+    this.initVideos()
+    this.initItVideos()
+}
 
-    initArticles() {
-        fetch("http://localhost:3000/articles", {
-
-            headers:{"Content-Type" : "application/json"}
-        })
-            .then(response=>response.json())
-            .then(response=>{
-                this.setState({articles:response})
-            })
-    }
     initItVideos() {
-        fetch("http://localhost:3000/it-videos", {
-
-            headers:{"Content-Type" : "application/json"}
-        })
-            .then(response=>response.json())
-            .then(response=>{
-                this.setState({itvideos:response})
-            })
+        this.props.actions.itVideoRequest()
     }
     initVideos() {
-        fetch("http://localhost:3000/videos", {
-
-            headers:{"Content-Type" : "application/json"}
-        })
-            .then(response=>response.json())
-            .then(response=>{
-                this.setState({videos:response})
-            })
+        this.props.actions.videoRequest()
     }
     renderArticle(article,index) {
 
@@ -93,9 +67,9 @@ class VideosContainer extends Component {
 
     render() {
 
-        const articles = this.state.articles
-        const videos = this.state.videos
-        const itvideos = this.state.itvideos
+
+        const videos = this.props.state.video.data
+        const itvideos = this.props.state.itVideo.data
 
         return (
             <div>

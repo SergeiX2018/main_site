@@ -16,13 +16,14 @@ class NewsContainer extends Component {
 
 
 
-        this.initVideos()
+
 
 
 
     }
      componentDidMount() {
          this.initArticles()
+         this.initVideos()
      }
     handleScroll() {
         const y = window.scrollY;
@@ -39,14 +40,8 @@ class NewsContainer extends Component {
         this.props.actions.newsRequest()
     }
     initVideos() {
-        fetch("http://localhost:3000/videos", {
+        this.props.actions.videoRequest()
 
-            headers:{"Content-Type" : "application/json"}
-        })
-            .then(response=>response.json())
-            .then(response=>{
-                this.setState({videos:response})
-            })
     }
     renderArticle(article,index) {
 
@@ -73,7 +68,7 @@ class NewsContainer extends Component {
     render() {
 
         const articles = this.props.state.news.data
-        const videos = this.state.videos
+        const videos = this.props.state.video.data
         return (
             <div>
 

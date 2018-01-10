@@ -32,4 +32,8 @@ export const videoRequest = (data)=>({
     data
 
 })
+export const itVideoRequest = (data)=>({
+    type:'IT_VIDEO_FETCH_REQUESTED',
+    data
 
+})

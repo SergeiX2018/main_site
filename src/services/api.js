@@ -40,9 +40,18 @@ export function registrationApi (data) {
 export function videoApi (data) {
     return fetch("http://localhost:3000/videos", {
 
-        headers:{"Content-Type" : "application/json"}
+        headers: {"Content-Type": "application/json"}
     })
-        .then(response=>response.json())
+        .then(response => response.json())
+
+}
+
+export function itVideoApi (data) {
+    return fetch("http://localhost:3000/it-videos", {
+
+        headers: {"Content-Type": "application/json"}
+    })
+        .then(response => response.json())
 
 }
 export function newsApi (data) {

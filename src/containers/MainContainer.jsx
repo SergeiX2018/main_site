@@ -24,6 +24,7 @@ class MainContainer extends Component {
 componentDidMount() {
     this.initVideos()
     this.initArticles()
+
 }
     initArticles() {
        this.props.actions.articleRequest()
