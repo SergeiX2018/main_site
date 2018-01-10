@@ -14,7 +14,7 @@ class MainContainer extends Component {
         }
 
 
-        this.initArticles()
+
 
 
 
@@ -23,16 +23,10 @@ class MainContainer extends Component {
 
 componentDidMount() {
     this.initVideos()
+    this.initArticles()
 }
     initArticles() {
-        fetch("http://localhost:3000/articles", {
-
-            headers:{"Content-Type" : "application/json"}
-        })
-            .then(response=>response.json())
-            .then(response=>{
-                this.setState({articles:response})
-            })
+       this.props.actions.articleRequest()
     }
     initVideos() {
         this.props.actions.videoRequest()
@@ -58,8 +52,9 @@ componentDidMount() {
 
     render() {
 
-        const articles = this.state.articles
+
         const videos = this.props.state.video.data
+        const articles = this.props.state.article.data
         return (
             <div>
 

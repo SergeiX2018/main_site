@@ -8,6 +8,20 @@ function* fetchLogin(action) {
         yield put({type: "LOGIN_FETCH_FAILED", message: e.message});
     }
 }
+
+
+
+function* fetchArticle(action) {
+    try {
+        const message = yield call(api.articleApi, action.data);
+        yield put({type: "ARTICLE_FETCH_SUCCESS", message});
+    } catch (e) {
+        yield put({type: "ARTICLE_FETCH_FAILED", message: e.message});
+    }
+}
+function* article() {
+    yield takeEvery("ARTICLE_FETCH_REQUESTED", fetchArticle);
+}
 function* fetchVideo(action) {
     try {
         const message = yield call(api.videoApi, action.data);
@@ -51,4 +65,5 @@ export default function* root() {
     yield fork(registration)
     yield fork(news)
     yield fork(video)
+    yield fork(article)
 }

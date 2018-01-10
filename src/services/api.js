@@ -1,3 +1,13 @@
+export function articleApi (data) {
+    return  fetch("http://localhost:3000/articles", {
+
+        headers:{"Content-Type" : "application/json"}
+    })
+        .then(response=>response.json())
+
+
+}
+
 
 export function loginApi (data) {
     return fetch("http://localhost:3000/login", {
