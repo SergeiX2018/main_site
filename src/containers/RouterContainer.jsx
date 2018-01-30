@@ -7,6 +7,7 @@ import NoMatchContainer from './NoMatchContainer'
 import ModalContainer from './ModalContainer'
 import NewsContainer from './NewsContainer'
 import VideosContainer from './VideosContainer'
+import ArticleContainer from './ArticleContainer'
 export default class RouterContainer extends Component {
 
     constructor() {
@@ -24,6 +25,8 @@ export default class RouterContainer extends Component {
                     <Route  path="/itvideos" component={VideosContainer}/>
                     <Route  path="/news" component={NewsContainer}/>
                     <Route path="/registration" component={RegistrationContainer}/>
+                   <Route path="/article/:id" component={ArticleContainer}/>
+
                     <Route component={MainContainer}/>
                 </Switch>
                 <ModalContainer/>

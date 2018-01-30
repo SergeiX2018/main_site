@@ -6,6 +6,8 @@ import news from './news'
 import video from './video'
 import itVideo from './itVideo'
 import article from './article'
+import categories from './categories'
+import locale from './locale'
 const rootReducer = combineReducers({
     login,
     modal,
@@ -14,6 +16,8 @@ const rootReducer = combineReducers({
     video,
     article,
     itVideo,
+    categories,
+    locale,
 })
 
 export default rootReducer

@@ -19,8 +19,16 @@ function* fetchArticle(action) {
         yield put({type: "ARTICLE_FETCH_FAILED", message: e.message});
     }
 }
+
+
+
 function* article() {
     yield takeEvery("ARTICLE_FETCH_REQUESTED", fetchArticle);
+
+}
+
+function* categories() {
+    yield takeEvery("CATEGORIES_FETCH_REQUESTED", fetchCategories);
 }
 function* fetchVideo(action) {
     try {
@@ -28,6 +36,14 @@ function* fetchVideo(action) {
         yield put({type: "VIDEO_FETCH_SUCCESS", message});
     } catch (e) {
         yield put({type: "VIDEO_FETCH_FAILED", message: e.message});
+    }
+
+}function* fetchCategories(action) {
+    try {
+        const message = yield call(api.categoriesApi, action.data);
+        yield put({type: "CATEGORIES_FETCH_SUCCESS", message});
+    } catch (e) {
+        yield put({type: "CATEGORIES_FETCH_FAILED", message: e.message});
     }
 
 }
@@ -79,4 +95,5 @@ export default function* root() {
     yield fork(video)
     yield fork(itVideo)
     yield fork(article)
+    yield fork(categories)
 }

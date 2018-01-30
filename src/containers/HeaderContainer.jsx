@@ -1,20 +1,25 @@
 import React, { Component } from 'react'
+import * as LocaleType from "./../constants/LocaleType"
 import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux'
 import * as Actions from "./../actions/index.js"
 import createHashHistory from 'history/createHashHistory'
 import  classNames  from 'classnames'
+import Localization  from "./../localization/Localization"
 
 class HeaderContainer extends Component {
     constructor() {
         super()
         this.onLoginClick = this.onLoginClick.bind(this)
+        this.changeLocaleEn = this.changeLocaleEn.bind(this)
+        this.changeLocaleRu = this.changeLocaleRu.bind(this)
         this.onLogoClick = this.onLogoClick.bind(this)
         this.onRegistrationClick = this.onRegistrationClick.bind(this)
         this.onSearchClick = this.onSearchClick.bind(this)
         this.onNewsClick = this.onNewsClick.bind(this)
         this.onVideossClick = this.onVideosClick.bind(this)
         this.handleScroll = this.handleScroll.bind(this)
+
         this.state = {isTop:true}
 
     }
@@ -60,7 +65,17 @@ const y = window.scrollY;
         createHashHistory().push('/')
 
     }
+    changeLocaleRu() {
+        this.props.actions.changeLocale(LocaleType.RU)
 
+    }
+
+    changeLocaleEn() {
+        this.props.actions.changeLocale(LocaleType.EN)
+    }
+    //onArticleClick() {
+       // createHashHistory().push('/article')
+    //}
 
     renderHeader() {
         return(
@@ -74,7 +89,9 @@ const y = window.scrollY;
                 <div className = "header-links">
                     <div className = " rec header-link">Реклама</div>
                     <div className = " site header-link">Создать сайт</div>
+
                 </div>
+
                 <div className = "button registration-button"  onClick={this.onRegistrationClick}>Регистрация</div>
                 <div className="button login-button" onClick={this.onLoginClick}>Войти</div>
 
@@ -82,12 +99,28 @@ const y = window.scrollY;
             </div>
         )
     }
+
+    renderLocalisation() {
+        return(
+            <div className = "header-localisation">
+            <div className = "locale-ru" onClick = {this.changeLocaleRu}>русский</div>
+            <div className = "locale-en"  onClick = {this.changeLocaleEn}>english</div>
+            </div>
+            )
+    }
+    getText(key) {
+        const locale = this.props.state.locale.locale
+        return Localization.getText(key,locale)
+
+
+    }
     renderHeaderCategory() {
         const isTop = this.state.isTop;
+        const newsText = this.getText("NEWS")
         return(
             <div className  = {classNames("header-category", {"header-fixed":!isTop})}>
                 <div className = "category-links" >
-                    <div className = "item news" onClick = {this.onNewsClick}>IT новости</div>
+                    <div className = "item news" onClick = {this.onNewsClick}>{newsText}</div>
                     <div className = "item video"  onClick = {this.onVideosClick}>Видеокурсы</div>
                     <div className = "item test">Тесты и практика</div>
                     <div className = "item readme" >Справочник</div>
@@ -109,7 +142,7 @@ const y = window.scrollY;
 
                 {this.state.isTop ? this.renderHeader(): null }
                 {this.renderHeaderCategory()}
-
+                {this.renderLocalisation()}
 
 
             </div>

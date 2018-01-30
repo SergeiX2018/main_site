@@ -1,5 +1,6 @@
 export function articleApi (data) {
-    return  fetch("http://localhost:3000/articles", {
+    const id = data ? data.id : ""
+    return  fetch("http://localhost:3000/articles?id="+id, {
 
         headers:{"Content-Type" : "application/json"}
     })
@@ -8,6 +9,16 @@ export function articleApi (data) {
 
 }
 
+
+export function categoriesApi (data) {
+    return  fetch("http://localhost:3000/categories", {
+
+        headers:{"Content-Type" : "application/json"}
+    })
+        .then(response=>response.json())
+
+
+}
 
 export function loginApi (data) {
     return fetch("http://localhost:3000/login", {
