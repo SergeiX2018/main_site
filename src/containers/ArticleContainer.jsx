@@ -19,7 +19,7 @@ class ArticleContainer extends Component {
 
     }
 
-    renderArticle() {
+    renderArticle() {debugger
 
         const articles = this.props.state.article.data
         const id = parseInt(this.props.match.params.id,10)
@@ -27,7 +27,10 @@ class ArticleContainer extends Component {
         if(!currentArticle) {
             return null
         }
-        const content = currentArticle.content
+
+        const localeKey = this.props.state.locale.localeKey;
+        const contentKey = `content_${localeKey}`;
+        const content = currentArticle[contentKey]
         return(
          <div dangerouslySetInnerHTML={{__html:content}}/>
         )

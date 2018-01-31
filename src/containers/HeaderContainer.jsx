@@ -109,7 +109,7 @@ const y = window.scrollY;
             )
     }
     getText(key) {
-        const locale = this.props.state.locale.locale
+        const locale = this.props.state.locale.localeKey
         return Localization.getText(key,locale)
 
 

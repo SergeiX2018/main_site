@@ -2,13 +2,13 @@ import * as LocaleType from "./../constants/LocaleType"
 
 
 const initState = {
-    locale: LocaleType.RU,
+    localeKey: LocaleType.RU,
 }
 
 const locale = (state = initState, action) => {
     switch (action.type) {
         case 'CHANGE_LOCALE':{
-            return {locale:action.data}
+            return {localeKey:action.data}
         }
 
 
