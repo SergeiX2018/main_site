@@ -117,18 +117,24 @@ const y = window.scrollY;
     renderHeaderCategory() {
         const isTop = this.state.isTop;
         const newsText = this.getText("NEWS")
+        const video= this.getText("VIDEO")
+        const tests = this.getText("TESTS")
+        const directory = this.getText("DIRECTORY")
+        const search= this.getText("SEARCH")
         return(
             <div className  = {classNames("header-category", {"header-fixed":!isTop})}>
                 <div className = "category-links" >
                     <div className = "item news" onClick = {this.onNewsClick}>{newsText}</div>
-                    <div className = "item video"  onClick = {this.onVideosClick}>Видеокурсы</div>
-                    <div className = "item test">Тесты и практика</div>
-                    <div className = "item readme" >Справочник</div>
+                    <div className = "item video"  onClick = {this.onVideosClick}>{video}</div>
+                    <div className = "item test">{tests}</div>
+                    <div className = "item readme" >{directory}</div>
                 </div>
-                <div className = " item header-search "onClick = {this.onSearchClick}>поиск</div>
+                <div className = " item header-search "onClick = {this.onSearchClick}>{search}</div>
 
             </div>
         )
+
+
 
 
 

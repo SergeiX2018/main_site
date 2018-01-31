@@ -1,3 +1,7 @@
 {
-  "NEWS":"it-news"
+  "NEWS":"it-news",
+   "VIDEO":"video",
+  "TESTS":"tests and practice",
+  "DIRECTORY":"Directory",
+  "SEARCH":"search"
 }
