@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux'
 import { connect } from 'react-redux'
 import * as Actions from "./../actions/index.js"
 import HeaderContainer from './HeaderContainer'
-
+import Button from 'react-bootstrap/lib/Button';
 
   class LoginContainer extends Component {
     constructor() {
@@ -13,7 +13,9 @@ import HeaderContainer from './HeaderContainer'
         this.onLoginClick = this.onLoginClick.bind(this)
         this.onPasswordChange = this.onPasswordChange.bind(this)
         this.onEmailChange = this.onEmailChange.bind(this)
+        this.onLoginGoogleClick = this.onLoginGoogleClick.bind(this)
         this.state = {seePassword:false,};
+
     }
         componentWillUpdate(nextProps,nextState) {
         if(this.props.state.login.result ===nextProps.state.login.result){
@@ -39,13 +41,16 @@ import HeaderContainer from './HeaderContainer'
 
     }
 
-
+      onLoginGoogleClick() {
+        location.href = 'http://localhost:3000/auth/google'
+      }
           onLoginClick() {
               const email = this.state.email
               const password = this.state.password
-
-              if (!email || !password) {
-                  return
+              const reg = /(\w+)@(\w+)/
+              const isMatch = email.match(reg)
+              if (!email || !password|| !isMatch) {
+               this.setState()
               }
 this.props.actions.loginRequest({email,password})
           }
@@ -95,7 +100,9 @@ this.props.actions.loginRequest({email,password})
                     <div onClick = {this.seePasswordClick} className = {seePasswordClass} ></div>
                     </div>
                     <div className = "login-button password" >Забыли пароль</div>
+
                     <div className = "login-button login" onClick = {this.onLoginClick}>Войти</div>
+                    <Button className = "login-button google" onClick = {this.onLoginGoogleClick}>Войти через Google</Button>
 
                 </div>
 

@@ -19,11 +19,11 @@ class ArticleContainer extends Component {
 
     }
 
-    renderArticle() {debugger
+    renderArticle() {
 
         const articles = this.props.state.article.data
         const id = parseInt(this.props.match.params.id,10)
-        const currentArticle = articles.find(article=>article.id ===id)
+        const currentArticle = articles.find(function (article) {return article.id ===id})
         if(!currentArticle) {
             return null
         }

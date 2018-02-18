@@ -91,7 +91,7 @@ const y = window.scrollY;
                     <div className = " site header-link">Создать сайт</div>
 
                 </div>
-
+                {this.renderLocalisation()}
                 <div className = "button registration-button"  onClick={this.onRegistrationClick}>Регистрация</div>
                 <div className="button login-button" onClick={this.onLoginClick}>Войти</div>
 
@@ -148,7 +148,6 @@ const y = window.scrollY;
 
                 {this.state.isTop ? this.renderHeader(): null }
                 {this.renderHeaderCategory()}
-                {this.renderLocalisation()}
 
 
             </div>
